@@ -17,3 +17,54 @@ footer .footer-names{font:clamp(1.45rem,3vw,2.3rem) Italiana,serif;letter-spacin
 .copyright{font-size:.5rem;letter-spacing:.2em;opacity:.55;margin:70px 0 0;position:relative}
 @media(max-width:800px){.timeline-row:before{top:10px}.footer-farewell{font-size:2.9rem}.copyright{margin-top:55px}}
 
+/* Movimiento editorial */
+.reveal{filter:blur(5px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1),filter .9s ease;transition-delay:var(--item-delay,0ms)}
+.reveal.visible{filter:blur(0)}
+.hero-figure img,.story-photo img{transition:transform 1.8s cubic-bezier(.22,1,.36,1)}
+.invite-open .hero-figure img{animation:heroReveal 1.8s cubic-bezier(.22,1,.36,1) both}
+.event-card,.rec-grid article{transition:transform .45s cubic-bezier(.22,1,.36,1),box-shadow .45s ease,background-color .35s ease}
+.event-card:hover,.rec-grid article:hover{transform:translateY(-7px);box-shadow:0 22px 60px rgba(32,55,46,.12);z-index:2}
+.timeline-row>div{animation:timelineIn .75s cubic-bezier(.22,1,.36,1) both;animation-delay:var(--item-delay,0ms)}
+@keyframes heroReveal{from{transform:scale(1.07)}to{transform:scale(1)}}
+@keyframes timelineIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* Preguntas frecuentes */
+.faq{max-width:1180px;display:grid;grid-template-columns:minmax(280px,.8fr) minmax(420px,1.2fr);gap:clamp(55px,9vw,130px);align-items:start}
+.faq-heading{position:sticky;top:80px}
+.faq-heading h2{font-size:clamp(3.4rem,6vw,5.8rem)}
+.faq-heading h2 i{color:var(--clay);font-weight:400}
+.faq-note{max-width:330px;color:#68746c;margin-top:30px}
+.accordion{counter-reset:faq}
+.accordion details{counter-increment:faq;border:1px solid transparent;border-top-color:var(--line);padding:0;transition:background-color .35s ease,border-color .35s ease,transform .35s ease}
+.accordion details:last-child{border-bottom:1px solid var(--line)}
+.accordion details[open]{background:var(--cream);border-color:var(--line);transform:translateX(-10px)}
+.accordion summary{font:1.18rem Italiana,serif;align-items:center;gap:18px;padding:25px 22px 25px 8px}
+.accordion summary:before{content:"0" counter(faq);font:600 .58rem DM Sans,sans-serif;letter-spacing:.12em;color:var(--clay);width:28px;flex:none}
+.accordion summary span{width:34px;height:34px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;margin-left:auto;font:1.15rem DM Sans,sans-serif;transition:transform .35s ease,background-color .35s ease,color .35s ease}
+.accordion details[open] summary span{background:var(--ink);color:white;border-color:var(--ink)}
+.accordion details>p{margin:0;padding:0 72px 28px 54px;line-height:1.8;animation:answerIn .4s ease both}
+@keyframes answerIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+@media(max-width:900px){
+  .timeline h2{font-size:clamp(2.8rem,11vw,4.8rem)}
+  .timeline-row{grid-template-columns:1fr;margin-left:0;width:100%;text-align:left}
+  .timeline-row div{grid-template-columns:88px 40px 56px 1fr;min-height:86px;width:100%}
+  .timeline-row:before{left:156px;right:auto;top:43px;bottom:43px;height:auto;width:1px}
+  .timeline-row strong{font-size:2rem;white-space:nowrap}
+  .timeline-row i{margin:8px 7px}
+  .faq{grid-template-columns:1fr;gap:45px}
+  .faq-heading{position:static}
+  .faq-note{margin-bottom:0}
+  .accordion details[open]{transform:none}
+}
+@media(max-width:430px){
+  .timeline-row div{grid-template-columns:72px 34px 52px 1fr}
+  .timeline-row:before{left:134px}
+  .timeline-row strong{font-size:1.7rem}
+  .timeline-row span{font-size:.52rem}
+  .timeline-row p{font-size:.68rem;letter-spacing:.08em}
+  .accordion summary{font-size:1.05rem;padding-right:12px}
+  .accordion details>p{padding:0 24px 24px 46px}
+}
+@media(prefers-reduced-motion:reduce){.reveal{filter:none}.timeline-row>div,.invite-open .hero-figure img{animation:none!important}.event-card:hover,.rec-grid article:hover{transform:none}}
+
