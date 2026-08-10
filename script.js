@@ -60,4 +60,10 @@ document.querySelector('#rsvpForm').addEventListener('submit', event => {
 });
 document.querySelector('#closeThanks').addEventListener('click', () => document.querySelector('#thanks').classList.remove('visible'));
 
+const backToTop = document.querySelector('#backToTop');
+window.addEventListener('scroll', () => {
+  backToTop.classList.toggle('visible', window.scrollY > window.innerHeight * 0.75);
+}, { passive: true });
+backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
 updateCountdown(); setInterval(updateCountdown, 1000);

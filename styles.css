@@ -68,3 +68,33 @@ footer .footer-names{font:clamp(1.45rem,3vw,2.3rem) Italiana,serif;letter-spacin
 }
 @media(prefers-reduced-motion:reduce){.reveal{filter:none}.timeline-row>div,.invite-open .hero-figure img{animation:none!important}.event-card:hover,.rec-grid article:hover{transform:none}}
 
+/* Regreso al inicio */
+.back-to-top{position:fixed;right:22px;bottom:22px;z-index:90;width:58px;height:58px;border:1px solid rgba(255,255,255,.35);border-radius:50%;background:rgba(32,55,46,.92);backdrop-filter:blur(10px);color:white;display:grid;place-items:center;align-content:center;gap:0;opacity:0;visibility:hidden;transform:translateY(18px) scale(.88);transition:opacity .35s ease,visibility .35s ease,transform .45s cubic-bezier(.22,1,.36,1),background-color .25s ease;box-shadow:0 10px 30px rgba(20,34,28,.2)}
+.back-to-top.visible{opacity:1;visibility:visible;transform:none}
+.back-to-top:hover{background:var(--clay);transform:translateY(-3px)}
+.back-to-top span{font:1.15rem/1 Italiana,serif}
+.back-to-top small{font:600 .42rem/1.4 DM Sans,sans-serif;letter-spacing:.16em}
+
+/* FAQ sin numeración y con tipografía contemporánea */
+.accordion{counter-reset:none}
+.accordion details{counter-increment:none}
+.accordion summary{font:500 1rem/1.45 "DM Sans",sans-serif;letter-spacing:.01em;padding-left:20px}
+.accordion summary:before{display:none;content:none}
+.accordion details>p{padding-left:20px;font-size:.9rem}
+
+/* Animaciones optimizadas para pantallas táctiles */
+.timeline-row>div{animation:none}
+.timeline.visible .timeline-row>div{animation:timelineIn .75s cubic-bezier(.22,1,.36,1) both;animation-delay:var(--item-delay,0ms)}
+@media(max-width:900px) and (hover:none){
+  .reveal{transform:translateY(38px);transition-duration:1s}
+  .event-card.reveal:nth-child(odd),.rec-grid article.reveal:nth-child(odd){transform:translateX(-28px)}
+  .event-card.reveal:nth-child(even),.rec-grid article.reveal:nth-child(even){transform:translateX(28px)}
+  .event-card.reveal.visible,.rec-grid article.reveal.visible{transform:none}
+  .timeline.visible .timeline-row i{animation:mobileMarker .65s cubic-bezier(.22,1,.36,1) both;animation-delay:calc(var(--item-delay,0ms) + 180ms)}
+  .accordion details[open] summary span{animation:mobilePlus .35s cubic-bezier(.22,1,.36,1)}
+  .back-to-top{right:16px;bottom:16px;width:54px;height:54px}
+}
+@keyframes mobileMarker{from{opacity:0;transform:scale(.55)}to{opacity:1;transform:scale(1)}}
+@keyframes mobilePlus{0%{transform:rotate(0) scale(.8)}100%{transform:rotate(45deg) scale(1)}}
+@media(prefers-reduced-motion:reduce){.back-to-top{transition:none}.timeline.visible .timeline-row>div,.timeline.visible .timeline-row i,.accordion details[open] summary span{animation:none!important}}
+
