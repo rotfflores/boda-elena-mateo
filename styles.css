@@ -98,3 +98,6 @@ footer .footer-names{font:clamp(1.45rem,3vw,2.3rem) Italiana,serif;letter-spacin
 @keyframes mobilePlus{0%{transform:rotate(0) scale(.8)}100%{transform:rotate(45deg) scale(1)}}
 @media(prefers-reduced-motion:reduce){.back-to-top{transition:none}.timeline.visible .timeline-row>div,.timeline.visible .timeline-row i,.accordion details[open] summary span{animation:none!important}}
 
+/* El estado visible debe prevalecer también en navegadores móviles */
+.reveal.visible{opacity:1!important;transform:none!important;filter:blur(0)!important}
+
